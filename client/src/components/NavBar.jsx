@@ -1,12 +1,10 @@
 import React from 'react';
 import SearchBar from './SearchBar';
 
-function NavBar({ onSearch }) {
+const NavBar = ({ onSearch }) => {
   return (
     <nav>
-      <SearchBar
-        onSearch={onSearch}
-      />
+      <SearchBar onSearch={onSearch} />
     </nav>
   );
 };

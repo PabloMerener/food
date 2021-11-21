@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 
-export default function SearchBar({onSearch}) {
+const SearchBar = ({ onSearch }) => {
   const [recipe, setRecipe] = useState("");
+
   return (
     <form onSubmit={(e) => {
       e.preventDefault();
+      onSearch(recipe);
     }}>
       <input
         type="text"
@@ -16,3 +18,5 @@ export default function SearchBar({onSearch}) {
     </form>
   );
 }
+
+export default SearchBar;
