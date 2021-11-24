@@ -11,7 +11,7 @@ const Home = () => {
         fetch(`http://localhost:3001/recipes?name=${recipe}`)
             .then(r => r.json())
             .then((data) => {
-                setRecipes(data.results);
+                setRecipes(data);
             });
 
         if (recipe) {
