@@ -1,5 +1,5 @@
 {
-    "url": "https://api.spoonacular.com/recipes/716426/information?apiKey=1045d92f015f4a22b90ca9aadb3aed59",
+    "url": "https://api.spoonacular.com/recipes/716426/information?apiKey=",
     "vegetarian": true,
     "vegan": true,
     "glutenFree": true,

@@ -1,5 +1,5 @@
 {
-    "url": "https://api.spoonacular.com/recipes/complexSearch?apiKey=1045d92f015f4a22b90ca9aadb3aed59",
+    "url": "https://api.spoonacular.com/recipes/complexSearch?apiKey=",
     "results": [
         {
             "id": 716426,

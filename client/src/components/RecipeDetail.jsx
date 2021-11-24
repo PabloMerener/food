@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
+import RecipeDetailCard from './RecipeDetailCard';
 
 const RecipeDetail = () => {
     const [recipe, setRecipe] = useState('');
@@ -15,7 +16,7 @@ const RecipeDetail = () => {
 
     return (
         <>
-            {!!recipe && recipe.url}
+            {!!recipe && <RecipeDetailCard recipe={recipe} />}
         </>
     );
 }
