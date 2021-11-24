@@ -3,7 +3,7 @@ import SearchBar from './SearchBar';
 
 const NavBar = ({ onSearch }) => {
   return (
-    <nav>
+    <nav key="nav">
       <SearchBar onSearch={onSearch} />
     </nav>
   );

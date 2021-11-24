@@ -7,7 +7,7 @@ const LandingPage = () => {
     return (
         <>
             <h1>Henry Food</h1>
-            <button onClick={() => { navigate('/home') }} type="button">Home</button>
+            <button onClick={() => { navigate('/recipes') }} type="button">Home</button>
         </>
     );
 }
