@@ -15,7 +15,7 @@ const setFilterToResponse = (req, res, data) => {
     const json = JSON.parse(data);
 
     if (name) {
-        res.send(json.results.filter(e => e.title.toUpperCase().indexOf(name.toUpperCase()) !== -1));
+        res.send(json.results.filter(e => e.title.toUpperCase().includes(name.toUpperCase())));
     } else {
         res.send(json.results);
     }
