@@ -1,17 +1,14 @@
 'use strict';
-var path = require('path');
-
 const express = require('express');
 const router = express.Router();
-
+const https = require('https');
 const fs = require('fs');
+const path = require('path');
 
 require('dotenv').config();
 const {
     API, API_KEY, MOCK_API
 } = process.env;
-
-const https = require('https')
 
 const setFilterToResponse = (req, res, data) => {
     const { name } = req.query;
@@ -32,14 +29,14 @@ router.get('/', (req, res) => {
         const url = API + '/recipes/complexSearch?addRecipeInformation=true&apiKey=' + API_KEY;
 
         https.get(url, function (httpsRes) {
-            var body = '';
+            var data = '';
 
             httpsRes.on('data', function (chunk) {
-                body += chunk;
+                data += chunk;
             });
 
             httpsRes.on('end', function () {
-                setFilterToResponse(req, res, body);
+                setFilterToResponse(req, res, data);
             });
         }).on('error', function (e) {
             console.log("Got an error: ", e);
@@ -48,7 +45,28 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../mock_api/recipes/' + req.params.id));
+    // No se por qué 'id' viene con el sufijo '.json'
+    const id = parseInt(req.params.id);
+
+    if (MOCK_API === 'true') {
+        res.sendFile(path.join(__dirname, '../../mock_api/recipes/' + id + '.json'));
+    } else {
+        const url = API + '/recipes/' + id + '/information?apiKey=' + API_KEY;
+
+        https.get(url, function (httpsRes) {
+            var data = '';
+
+            httpsRes.on('data', function (chunk) {
+                data += chunk;
+            });
+
+            httpsRes.on('end', function () {
+                res.send(JSON.parse(data));
+            });
+        }).on('error', function (e) {
+            console.log("Got an error: ", e);
+        });
+    }
 });
 
 module.exports = router;
