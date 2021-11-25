@@ -11,14 +11,22 @@ const {
 } = process.env;
 
 const setFilterToResponse = (req, res, data) => {
-    const { name } = req.query;
+    const { name, diet } = req.query;
     const json = JSON.parse(data);
 
-    if (name) {
-        res.send(json.results.filter(e => e.title.toUpperCase().includes(name.toUpperCase())));
-    } else {
-        res.send(json.results);
+    let results = json.results;
+
+    if (name) results = results.filter(e => e.title.toUpperCase().includes(name.toUpperCase()));
+
+    if (Array.isArray(diet)) {
+        const dietQuery = diet.map(e => e.toUpperCase());
+        results = results.filter(element => dietQuery.every(e => element.diets.map(e => e.toUpperCase()).includes(e.toUpperCase())));
+    } else if (diet) {
+        const dietQuery = diet.toUpperCase();
+        results = results.filter(e => e.diets.map(e => e.toUpperCase()).includes(dietQuery));
     }
+
+    res.send(results);
 }
 
 router.get('/', (req, res) => {

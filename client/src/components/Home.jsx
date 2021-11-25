@@ -17,7 +17,23 @@ const Home = () => {
 
     const navigate = useNavigate();
     const onSearch = (recipe) => {
-        fetch(`http://localhost:3001/recipes?name=${recipe}`)
+        const endpoint = 'http://localhost:3001/recipes';
+        const nameQuery = recipe.length ? 'name=' + recipe : '';
+        const dietQuery = [].slice.call(document.getElementById('DietSelect'))
+                                .filter(e => e.selected)
+                                .map(e => 'diet=' + e.value)
+                                .join('&');
+
+        let query = nameQuery;
+        if (query.length) {
+            if (dietQuery.length) query = query + `&${dietQuery}`;
+        } else {
+            query = dietQuery;
+        }
+
+        const url = endpoint + (query.length ? `?${query}` : query);
+
+        fetch(url)
             .then(r => r.json())
             .then((data) => {
                 setRecipes(data);
