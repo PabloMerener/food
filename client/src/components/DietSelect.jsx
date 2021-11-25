@@ -5,7 +5,6 @@ const DietSelect = ({ dietTypes }) => {
 
   return (
     <>
-      <label key="label" for="diet">Dieta:</label>
       <select name="diet" id="DietSelect" multiple >
         {options}
       </select>

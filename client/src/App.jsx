@@ -6,7 +6,6 @@ import RecipeDetail from './components/RecipeDetail';
 
 function App() {
   return (
-    <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<LandingPage />} />
@@ -14,7 +13,6 @@ function App() {
           <Route path='/recipes/:id' element={<RecipeDetail />} />
         </Routes>
       </BrowserRouter>
-    </div>
   );
 }
 

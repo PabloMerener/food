@@ -5,10 +5,10 @@ const LandingPage = () => {
     const navigate = useNavigate();
 
     return (
-        <>
-            <h1>Henry Food</h1>
+        <div id="left" className="column">
+            <h1 className="top-left"> Henry Food</h1>
             <button onClick={() => { navigate('/recipes') }} type="button">Home</button>
-        </>
+        </div>
     );
 }
 

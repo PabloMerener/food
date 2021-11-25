@@ -5,8 +5,12 @@ import DietSelect from './DietSelect';
 const NavBar = ({ onSearch, dietTypes }) => {
   return (
     <nav key="nav">
-      {dietTypes.length && <DietSelect dietTypes={dietTypes} />}
-      <SearchBar onSearch={onSearch} />
+      <div>
+        <SearchBar onSearch={onSearch} />
+      </div>
+      <div>
+        {dietTypes.length && <DietSelect dietTypes={dietTypes} />}
+      </div>
     </nav>
   );
 };

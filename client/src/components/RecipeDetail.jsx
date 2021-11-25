@@ -15,9 +15,11 @@ const RecipeDetail = () => {
     }, [id]);
 
     return (
-        <>
-            {!!recipe && <RecipeDetailCard recipe={recipe} />}
-        </>
+        <div id="root" className="App" >
+            <div className="column">
+                {!!recipe && <RecipeDetailCard recipe={recipe} />}
+            </div>
+        </div>
     );
 }
 

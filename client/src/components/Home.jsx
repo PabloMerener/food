@@ -20,9 +20,9 @@ const Home = () => {
         const endpoint = 'http://localhost:3001/recipes';
         const nameQuery = recipe.length ? 'name=' + recipe : '';
         const dietQuery = [].slice.call(document.getElementById('DietSelect'))
-                                .filter(e => e.selected)
-                                .map(e => 'diet=' + e.value)
-                                .join('&');
+            .filter(e => e.selected)
+            .map(e => 'diet=' + e.value)
+            .join('&');
 
         let query = nameQuery;
         if (query.length) {
@@ -46,8 +46,21 @@ const Home = () => {
 
     return (
         <>
-            <NavBar onSearch={onSearch} dietTypes={dietTypes} />
-            {!!recipes.length && recipes.map(e => <RecipeOverview key={e.id} recipe={e} />)}
+            <div id="left" className="column">
+                <div className="top-left">
+                    <h1>Recipes</h1>
+                </div>
+                <div className="bottom">
+                    <NavBar onSearch={onSearch} dietTypes={dietTypes} />
+                </div>
+            </div>
+            <div id="right" className="column">
+                <div className="top-right">
+                </div>
+                <div className="bottom">
+                    {!!recipes.length && recipes.map(e => <RecipeOverview key={e.id} recipe={e} />)}
+                </div>
+            </div>
         </>
     )
 }
