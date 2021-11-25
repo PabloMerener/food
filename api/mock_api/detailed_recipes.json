@@ -1,5 +1,5 @@
 {
-    "url": "https://api.spoonacular.com/recipes/complexSearch?RecipeInformation=true&apiKey=",
+    "url": "https://api.spoonacular.com/recipes/complexSearch?addRecipeInformation=true&apiKey=",
     "results": [
         {
             "vegetarian": true,
