@@ -4,14 +4,10 @@ import DietSelect from './DietSelect';
 
 const NavBar = ({ onSearch, dietTypes }) => {
   return (
-    <nav key="nav">
-      <div>
-        <SearchBar onSearch={onSearch} />
-      </div>
-      <div>
-        {dietTypes.length && <DietSelect dietTypes={dietTypes} />}
-      </div>
-    </nav>
+    <div style={{ display: "flex", flexDirection: 'column', padding: "10px"}}>
+      <SearchBar onSearch={onSearch} />
+      {dietTypes.length && <DietSelect dietTypes={dietTypes} />}
+    </div>
   );
 };
 

@@ -4,7 +4,7 @@ const SearchBar = ({ onSearch }) => {
   const [recipe, setRecipe] = useState("");
 
   return (
-    <form onSubmit={(e) => {
+    <form style={{ margin: "5px" }} onSubmit={(e) => {
       e.preventDefault();
       onSearch(recipe);
     }}>

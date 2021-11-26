@@ -46,18 +46,12 @@ const Home = () => {
 
     return (
         <>
-            <div id="left" className="column">
-                <div className="top-left">
-                    <h1>Recipes</h1>
-                </div>
-                <div className="bottom">
-                    <NavBar onSearch={onSearch} dietTypes={dietTypes} />
-                </div>
+            <div className="header">
+                <h1 >Recipes</h1>
             </div>
-            <div id="right" className="column">
-                <div className="top-right">
-                </div>
-                <div className="bottom">
+            <div style={{ display: "flex" }}>
+                <NavBar style={{ width: "20%" }} onSearch={onSearch} dietTypes={dietTypes} />
+                <div style={{ width: "80%" }}>
                     {!!recipes.length && recipes.map(e => <RecipeOverview key={e.id} recipe={e} />)}
                 </div>
             </div>

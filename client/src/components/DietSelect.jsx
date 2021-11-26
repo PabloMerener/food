@@ -5,7 +5,7 @@ const DietSelect = ({ dietTypes }) => {
 
   return (
     <>
-      <select name="diet" id="DietSelect" multiple >
+      <select name="diet" id="DietSelect" multiple style={{ height: "180px", margin: "5px" }}>
         {options}
       </select>
     </>
