@@ -1,0 +1,5 @@
+\?                  list of all the available psql commands
+\l                  list of all available databases
+\dt                 list of all available tables in the current database
+\c <database_name>  select database
+\d <table_name>     describe table
