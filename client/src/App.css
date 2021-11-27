@@ -1,60 +1,58 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* -------------------------------------------------- */
-
 *{
-  box-sizing: border-box;
-}
+    box-sizing: border-box;
+    margin: 0;
+  }
+  
+  html, body {
+    height: 100%;
+  }
+  
+  #root {
+    height: 100%;
+  }
 
-html, body {
-  height: 100%;
-}
+  h1 {
+    color: cornsilk;
+  }
+  
+  .parent {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-around;
+    background-color: #17426d;
+  };
 
-#root {
-  height: 100%;
-}
+/* 
+No borrar la clase sarasa porque deja de funcionar la clase que le sigue. Cosa de Mandinga.
+*/
+  .sarasa {
+    flex: 1;
+    background-color: blue;
+  }
 
-.header {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 10%;
-  background-color: lightgrey;
-};
+  .main {
+    display: flex;
+    flex-direction: row;
+    /* flex: 11; */
+  };
+
+/* 
+No borrar la clase sarasa porque deja de funcionar la clase que le sigue. Cosa de Mandinga.
+*/
+.sarasa2 {
+    flex: 1;
+    background-color: blue;
+  }
+
+  .sidebar {
+    flex: 1;
+  }
+
+  .content {
+    flex: 1;
+  }

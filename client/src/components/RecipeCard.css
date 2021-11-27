@@ -1,0 +1,40 @@
+.recipeCardParent {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+  
+.recipeCardHeader {
+    flex: 1;
+};
+
+/*  Cosa de Mandinga!
+    Si se borra la clase sarasa3 deja de funcionar la clase siguiente (recipeCardMain) */
+.sarasa3 {
+    background-color: #fff666;
+}
+
+.recipeCardMain {
+    display: flex;
+    flex-direction: row;
+    flex: 3;
+    padding: 10px;
+};
+
+/*  Cosa de Mandinga! Si se borra la clase sarasa deja de funcionar la clase siguiente */
+    .sarasa4 {
+        background-color: #fff666;
+}
+
+.recipeCardLeft {
+    padding: 5px;
+}
+
+/*  Cosa de Mandinga! Si se borra la clase sarasa deja de funcionar la clase siguiente */
+.sarasa5 {
+    background-color: #fff666;
+}
+
+.recipeCardRight {
+    padding: 5px;
+};

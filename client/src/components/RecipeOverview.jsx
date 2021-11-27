@@ -1,19 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import './RecipeCard.css';
 
 const RecipeOverview = ({ recipe }) => {
     return (
-        <>
-            <div>
-                <Link to={`/recipes/${recipe.id}`}>
-                    <p key={recipe.id}> {recipe.title} </p>
-                </Link>
+        <div className="recipeCardParent">
+            <div className="recipeCardHeader">
+                    {recipe.title}
             </div>
-            <div>
-                <img key={recipe.image} src={recipe.image} alt="recipe"></img>
-                {recipe.diets.map(e => (<>{e}<br></br></>))}
+            <div className="recipeCardMain">
+                <div className="recipeCardLeft">
+                    <Link to={`/recipes/${recipe.id}`}>
+                        <img
+                            key={recipe.image}
+                            src={recipe.image}
+                            alt="recipe"
+                            width="100%"
+                        >
+                        </img>
+                    </Link>
+                </div>
+                <div className="recipeCardMain">
+                    <div className="recipeCardRight">
+                        {recipe.diets.map(e => (<>{`+ ${e}`}<br></br></>))}
+                    </div>
+                </div>
+
             </div>
-        </>
+        </div>
     )
 }
 
