@@ -31,7 +31,7 @@ const setFilterToResponse = (req, res, data) => {
 
 router.get('/', (req, res) => {
     if (MOCK_API === 'true') {
-        const filePath = path.join(__dirname, '../../mock_api/detailed_recipes.json');
+        const filePath = path.join(__dirname, '../../mock_api/detailed_recipes_100.json');
         setFilterToResponse(req, res, fs.readFileSync(filePath, 'utf8'));
     } else {
         const url = API + '/recipes/complexSearch?addRecipeInformation=true&apiKey=' + API_KEY;

@@ -6,7 +6,7 @@ const path = require('path');
 const { Diet } = require('../db.js');
 
 router.get('/', async (req, res) => {
-    const results = await Diet.findAll();
+    const results = await Diet.findAll({ order: [['name', 'ASC']] });
 
     if (results.length) {
         res.send(results);
