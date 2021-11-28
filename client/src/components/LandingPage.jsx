@@ -9,16 +9,23 @@ const LandingPage = () => {
             <div className="header">
                 <h1> Henry Food</h1>
                 <div style={{ display: "flex" }}>
-                <button
-                    style={{ alignItems: "center" }}
-                    onClick={() => { navigate('/recipes') }}
-                    type="button"
-                >
-                    Comenzar
+                    <button
+                        style={{ alignItems: "center" }}
+                        onClick={() => { navigate('/recipes') }}
+                        type="button"
+                    >
+                        Comenzar
                     </button>
                 </div>
             </div>
-            <div className="main">
+            <div className="main" style={{ justifyContent: "center", alignItems: "center" }}>
+                <img
+                    key="cooking"
+                    src="/cooking.png"
+                    alt="cooking"
+                    width="40%"
+                >
+                </img>
             </div>
         </div>
     );

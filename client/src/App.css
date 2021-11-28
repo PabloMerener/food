@@ -37,15 +37,13 @@ No borrar la clase sarasa porque deja de funcionar la clase que le sigue. Cosa d
 
   .main {
     display: flex;
-    flex-direction: row;
-    /* flex: 11; */
+    flex-grow: 1;
   };
 
 /* 
 No borrar la clase sarasa porque deja de funcionar la clase que le sigue. Cosa de Mandinga.
 */
 .sarasa2 {
-    flex: 1;
     background-color: blue;
   }
 
