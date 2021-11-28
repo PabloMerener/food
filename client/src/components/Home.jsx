@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import NavBar from './NavBar';
 import RecipeOverview from './RecipeOverview';
+import Header from './Header';
 
 const Home = () => {
     const [recipes, setRecipes] = useState([]);
@@ -46,13 +47,11 @@ const Home = () => {
 
     return (
         <div className="parent">
-            <div className="header">
-                <h1 >Recipes</h1>
-            </div>
+            <Header title="Recipes" navigateTo="/recipe/post" buttonText="Crear" />
             <div className="main">
                 <div style={{ display: "flex" }}>
                     <NavBar style={{ width: "20%" }} onSearch={onSearch} dietTypes={dietTypes} />
-                    <div style={{ width: "80%" }}>
+                    <div>
                         {!!recipes.length && recipes.map(e => <RecipeOverview key={e.id} recipe={e} />)}
                     </div>
                 </div>
