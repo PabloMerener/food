@@ -3,7 +3,7 @@ import Header from './Header';
 
 const LandingPage = () => {
     return (
-        <div className="parent">
+        <>
             <Header title="Henry Food" navigateTo="/recipes" buttonText="Comenzar"/>
             <div className="main" style={{ justifyContent: "center", alignItems: "center" }}>
                 <img
@@ -14,7 +14,7 @@ const LandingPage = () => {
                 >
                 </img>
             </div>
-        </div>
+        </>
     );
 }
 

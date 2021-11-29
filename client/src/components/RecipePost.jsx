@@ -4,7 +4,7 @@ import './RecipeForm.css';
 
 function RecipePost() {
     return (
-        <div className="parent">
+        <>
             <Header title="Create Recipe" navigateTo="/" buttonText="Home" />
             <div className="main">
                 <div className="container">
@@ -51,7 +51,7 @@ function RecipePost() {
                     </form>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 

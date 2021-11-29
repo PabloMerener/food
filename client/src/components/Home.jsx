@@ -46,7 +46,7 @@ const Home = () => {
     }
 
     return (
-        <div className="parent">
+        <>
             <Header title="Recipes" navigateTo="/recipe/post" buttonText="Crear" />
             <div className="main">
                 <div style={{ display: "flex" }}>
@@ -56,7 +56,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

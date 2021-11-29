@@ -9,16 +9,12 @@
   
   #root {
     height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   h1 {
     color: cornsilk;
-  }
-  
-  .parent {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
   }
   
   .header {
