@@ -31,18 +31,45 @@ function RecipePost() {
                                 <textarea name="stepByStep" rows="3" />
                             </li>
                             <li>
-                                <label for="diets">Dieta:</label>
-                                <select name="diets" multiple>
-                                    <option value="Dairy Free">Dairy Free</option>
-                                    <option value="Fodmap Friendly">Fodmap Friendly</option>
-                                    <option value="Gluten Free">Gluten Free</option>
-                                    <option value="Lacto Ovo Vegetarian">Lacto Ovo Vegetarian</option>
-                                    <option value="Paleolithic">Paleolithic</option>
-                                    <option value="Pescatarian">Pescatarian</option>
-                                    <option value="Primal">Primal</option>
-                                    <option value="Vegan">Vegan</option>
-                                    <option value="Whole 30">Whole 30</option>
-                                </select>
+                                <label for="diets">Dietas:</label>
+                                <ul >
+                                    <li>
+                                        <input type="checkbox" />
+                                        <label for="Dairy Free">Dairy Free</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" />
+                                        <label for="Fodmap Friendly">Fodmap Friendly</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" />
+                                        <label for="Gluten Free">Gluten Free</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" />
+                                        <label for="Lacto Ovo Vegetarian">Lacto Ovo Vegetarian</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" />
+                                        <label for="Paleolithic">Paleolithic</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" />
+                                        <label for="Pescatarian">Pescatarian</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" />
+                                        <label for="Primal">Primal</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" />
+                                        <label for="Vegan">Vegan</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" />
+                                        <label for="Whole 30">Whole 30</label>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
                                 <button type="submit">Submit</button>
