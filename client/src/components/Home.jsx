@@ -47,7 +47,7 @@ const Home = () => {
 
     return (
         <>
-            <Header title="Recipes" navigateTo="/recipe/post" buttonText="Crear" />
+            <Header title="Recipes" navigateTo="/recipes/create" buttonText="Crear" />
             <div className="main">
                 <div style={{ display: "flex" }}>
                     <NavBar style={{ width: "20%" }} onSearch={onSearch} dietTypes={dietTypes} />

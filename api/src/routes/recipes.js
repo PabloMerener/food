@@ -4,6 +4,7 @@ const router = express.Router();
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
+const { Recipe } = require('../db.js');
 
 require('dotenv').config();
 const {
@@ -75,6 +76,12 @@ router.get('/:id', (req, res) => {
             console.log("Got an error: ", e);
         });
     }
+});
+
+router.post('/create', async (req, res) => {
+    const { name } = req.body;
+
+    const recipe = Recipe.create({ name });
 });
 
 module.exports = router;

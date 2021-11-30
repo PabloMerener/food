@@ -1,74 +1,94 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from './Header';
 import './RecipeForm.css';
 
 function RecipePost() {
+    const [dietTypes, setDietTypes] = useState([]);
+    const [input, setInput] = useState({
+        diets: []
+    });
+
+    useEffect(() => {
+        fetch('http://localhost:3001/diet-types')
+            .then(r => r.json())
+            .then((data) => {
+                setDietTypes(data);
+            });
+    }, []);
+
+    const checkboxes = dietTypes.map(e => (
+        <li>
+            <input type="checkbox" name={e.id} onChange={(e) => handleInputChange(e)} />
+            <label for={e.name}>{e.name}</label>
+        </li>
+    ));
+
+    const handleInputChange = function (e) {
+        if (e.target.type === 'checkbox') {
+            const newDietList = [...input.diets];
+            if (e.target.checked) {
+                newDietList.push(e.target.name);
+            } else {
+                newDietList.splice(newDietList.indexOf(e.target.name), 1);
+            }
+            setInput({
+                ...input,
+                ['diets']: newDietList
+            });
+        } else {
+            setInput({
+                ...input,
+                [e.target.name]: e.target.value
+            });            
+        }
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        debugger;
+
+        fetch('http://localhost:3001/recipes/create', {
+            method: 'POST',
+            body: JSON.stringify(input),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+            .catch(error => console.error('Error:', error))
+            .then(response => console.log('Success:', response));
+    };
+
     return (
         <>
             <Header title="Create Recipe" navigateTo="/" buttonText="Home" />
             <div className="main">
                 <div className="container">
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <ul className="flex-outer">
                             <li>
                                 <label for="name">Nombre:</label>
-                                <input name="name" type="text" />
+                                <input name="name" type="text" onChange={(e) => handleInputChange(e)} onChange={(e) => handleInputChange(e)} />
                             </li>
                             <li>
                                 <label for="dishOverview">Resumen del plata:</label>
-                                <textarea name="dishOverview" rows="3" />
+                                <textarea name="dishOverview" rows="3" onChange={(e) => handleInputChange(e)} />
                             </li>
                             <li>
                                 <label for="score">Puntuación:</label>
-                                <input name="score" type="number" min="0" max="100" />
+                                <input name="score" type="number" min="0" max="100" onChange={(e) => handleInputChange(e)} />
                             </li>
                             <li>
                                 <label for="healthScore">Nivel de "comida saludable":</label>
-                                <input name="healthScore" type="number" min="0" max="100" />
+                                <input name="healthScore" type="number" min="0" max="100" onChange={(e) => handleInputChange(e)} />
                             </li>
                             <li>
                                 <label for="stepByStep">Paso a paso:</label>
-                                <textarea name="stepByStep" rows="3" />
+                                <textarea name="stepByStep" rows="3" onChange={(e) => handleInputChange(e)} />
                             </li>
                             <li>
                                 <label for="diets">Dietas:</label>
-                                <ul >
-                                    <li>
-                                        <input type="checkbox" />
-                                        <label for="Dairy Free">Dairy Free</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" />
-                                        <label for="Fodmap Friendly">Fodmap Friendly</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" />
-                                        <label for="Gluten Free">Gluten Free</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" />
-                                        <label for="Lacto Ovo Vegetarian">Lacto Ovo Vegetarian</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" />
-                                        <label for="Paleolithic">Paleolithic</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" />
-                                        <label for="Pescatarian">Pescatarian</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" />
-                                        <label for="Primal">Primal</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" />
-                                        <label for="Vegan">Vegan</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" />
-                                        <label for="Whole 30">Whole 30</label>
-                                    </li>
+                                <ul>
+                                    {dietTypes.length && checkboxes}
                                 </ul>
                             </li>
                             <li>

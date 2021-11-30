@@ -1,3 +1,5 @@
+sudo -u postgres psql
+
 \?                  list of all the available psql commands
 \l                  list of all available databases
 \dt                 list of all available tables in the current database
