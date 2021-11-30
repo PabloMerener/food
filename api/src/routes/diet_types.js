@@ -13,11 +13,12 @@ router.get('/', async (req, res) => {
     } else {
         const filePath = path.join(__dirname, '../../mock_api/diet_types.json');
         const json = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+        const results = [];
         for (let index = 0; index < json.results.length; index++) {
             const name = json.results[index].name;
-            Diet.create({ name });
+            results.push(await Diet.create({ name }));
         }
-        res.send(json.results);
+        res.send(results);
     }
 });
 

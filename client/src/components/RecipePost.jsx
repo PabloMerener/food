@@ -18,7 +18,7 @@ function RecipePost() {
 
     const checkboxes = dietTypes.map(e => (
         <li>
-            <input type="checkbox" name={e.id} onChange={(e) => handleInputChange(e)} />
+            <input type="checkbox" name={e.name} onChange={(e) => handleInputChange(e)} />
             <label for={e.name}>{e.name}</label>
         </li>
     ));
@@ -45,8 +45,6 @@ function RecipePost() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        debugger;
-
         fetch('http://localhost:3001/recipes/create', {
             method: 'POST',
             body: JSON.stringify(input),

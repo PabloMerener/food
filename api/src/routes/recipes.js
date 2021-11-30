@@ -4,7 +4,7 @@ const router = express.Router();
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
-const { Recipe } = require('../db.js');
+const { Recipe, Diet } = require('../db.js');
 
 require('dotenv').config();
 const {
@@ -79,9 +79,16 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/create', async (req, res) => {
-    const { name } = req.body;
+    const { name, diets } = req.body;
 
-    const recipe = Recipe.create({ name });
+    const recipe = await Recipe.create({ name });
+    for (let index = 0; index < diets.length; index++) {
+        const dietName = diets[index];
+        const diet = await Diet.findOne({ where: { name: dietName } });
+        await recipe.addDiet(diet.id);
+    }
+
+    res.send(recipe);
 });
 
 module.exports = router;
