@@ -52,7 +52,7 @@ const Home = () => {
                 <div style={{ display: "flex" }}>
                     <NavBar style={{ width: "20%" }} onSearch={onSearch} dietTypes={dietTypes} />
                     <div>
-                        {!!recipes.length && recipes.map(e => <RecipeOverview key={e.id} recipe={e} />)}
+                        {recipes.map(e => <RecipeOverview key={e.id} recipe={e} />)}
                     </div>
                 </div>
             </div>

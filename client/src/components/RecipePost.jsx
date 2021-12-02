@@ -69,7 +69,7 @@ function RecipePost() {
                             </li>
                             <li>
                                 <label for="dishOverview">Resumen del plata:</label>
-                                <textarea name="dishOverview" rows="3" onChange={(e) => handleInputChange(e)} />
+                                <textarea name="dish_overview" rows="3" onChange={(e) => handleInputChange(e)} />
                             </li>
                             <li>
                                 <label for="score">Puntuación:</label>
@@ -77,16 +77,16 @@ function RecipePost() {
                             </li>
                             <li>
                                 <label for="healthScore">Nivel de "comida saludable":</label>
-                                <input name="healthScore" type="number" min="0" max="100" onChange={(e) => handleInputChange(e)} />
+                                <input name="health_score" type="number" min="0" max="100" onChange={(e) => handleInputChange(e)} />
                             </li>
                             <li>
                                 <label for="stepByStep">Paso a paso:</label>
-                                <textarea name="stepByStep" rows="3" onChange={(e) => handleInputChange(e)} />
+                                <textarea name="step_by_step" rows="3" onChange={(e) => handleInputChange(e)} />
                             </li>
                             <li>
                                 <label for="diets">Dietas:</label>
                                 <ul>
-                                    {dietTypes.length && checkboxes}
+                                    {checkboxes}
                                 </ul>
                             </li>
                             <li>

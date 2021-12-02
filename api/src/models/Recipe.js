@@ -14,5 +14,25 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    dish_overview: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    score: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+      validate: {min: 0, max: 100}      
+    },
+    health_score: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+      validate: {min: 0, max: 100}      
+    },
+    step_by_step: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    }
   });
 };
