@@ -5,7 +5,8 @@ import './RecipeForm.css';
 function RecipePost() {
     const [dietTypes, setDietTypes] = useState([]);
     const [input, setInput] = useState({
-        diets: []
+        diets: [],
+        response: null
     });
 
     useEffect(() => {
@@ -33,13 +34,13 @@ function RecipePost() {
             }
             setInput({
                 ...input,
-                ['diets']: newDietList
+                diets: newDietList
             });
         } else {
             setInput({
                 ...input,
                 [e.target.name]: e.target.value
-            });            
+            });
         }
     }
 
@@ -52,8 +53,19 @@ function RecipePost() {
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json())
-            .catch(error => console.error('Error:', error))
-            .then(response => console.log('Success:', response));
+            .then(response => {
+                if ('errors' in response) { // TODO: check status code
+                    alert(response.errors
+                        .map(e => e.value + ' (' + e.message + ')')
+                        .join('/')
+                    );
+                } else {
+                    document.getElementById("recipe-form").reset();
+                    const message = `${response.name} recipe has been created successfully`;
+                    alert(message);
+                }
+            })
+            .catch(error => alert('Server error'));
     };
 
     return (
@@ -61,11 +73,11 @@ function RecipePost() {
             <Header title="Create Recipe" navigateTo="/" buttonText="Home" />
             <div className="main">
                 <div className="container">
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} id="recipe-form">
                         <ul className="flex-outer">
                             <li>
                                 <label for="name">Nombre:</label>
-                                <input name="name" type="text" onChange={(e) => handleInputChange(e)} onChange={(e) => handleInputChange(e)} />
+                                <input name="name" type="text" onChange={(e) => handleInputChange(e)} />
                             </li>
                             <li>
                                 <label for="dishOverview">Resumen del plata:</label>

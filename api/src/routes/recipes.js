@@ -99,7 +99,7 @@ router.post('/create', async (req, res) => {
         }
         recipe.addDiets(associatedDiets.map(e => e.id));
 
-        res.send({
+        res.status(201).send({
             ...recipe.toJSON(),
             diets: associatedDiets.map(e => e.toJSON())
         });
