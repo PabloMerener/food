@@ -1,12 +1,12 @@
 import React from 'react';
 import SearchBar from './SearchBar';
-import DietSelect from './DietSelect';
+import DietCheckboxes from './DietCheckboxes';
 
 const NavBar = ({ onSearch, dietTypes }) => {
   return (
     <div style={{ display: "flex", flexDirection: 'column', padding: "10px"}}>
       <SearchBar onSearch={onSearch} />
-      {dietTypes.length && <DietSelect dietTypes={dietTypes} />}
+      {dietTypes.length && <DietCheckboxes dietTypes={dietTypes} />}
     </div>
   );
 };

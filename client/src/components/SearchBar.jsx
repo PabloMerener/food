@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import './RecipeForm.css';
+
 const SearchBar = ({ onSearch }) => {
   const [recipe, setRecipe] = useState("");
 
@@ -8,15 +10,22 @@ const SearchBar = ({ onSearch }) => {
       e.preventDefault();
       onSearch(recipe);
     }}>
-      <input
-        type="text"
-        placeholder="Receta ..."
-        value={recipe}
-        onChange={e => setRecipe(e.target.value)}
-      />
-      <input type="submit" value="Buscar" />
+      <ul className="flex-outer" >
+        <li>
+
+          <input
+            type="text"
+            placeholder="Receta ..."
+            value={recipe}
+            onChange={e => setRecipe(e.target.value)}
+          />
+          <input type="submit" value="Buscar" />
+        </li>
+      </ul>
     </form>
   );
 }
 
 export default SearchBar;
+
+

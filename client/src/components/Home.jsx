@@ -20,10 +20,11 @@ const Home = () => {
     const onSearch = (recipe) => {
         const endpoint = 'http://localhost:3001/recipes';
         const nameQuery = recipe.length ? 'name=' + recipe : '';
-        const dietQuery = [].slice.call(document.getElementById('DietSelect'))
-            .filter(e => e.selected)
-            .map(e => 'diet=' + e.value)
-            .join('&');
+        const dietQuery = [];
+        // const dietQuery = [].slice.call(document.getElementById('DietSelect'))
+        //     .filter(e => e.selected)
+        //     .map(e => 'diet=' + e.value)
+        //     .join('&');
 
         let query = nameQuery;
         if (query.length) {

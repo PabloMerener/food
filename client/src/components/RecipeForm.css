@@ -54,7 +54,7 @@ https://codepen.io/tutsplus/pen/oLwYRJ
     letter-spacing: .09em;
   }
   
-  .flex-outer > li > label,
+  .flex-outer > li > label:not(.nav-bar),
   .flex-outer li p {
     flex: 1 0 300px;
     max-width: 300px;
