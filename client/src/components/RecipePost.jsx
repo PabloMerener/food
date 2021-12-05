@@ -20,7 +20,7 @@ function RecipePost() {
     const checkboxes = dietTypes.map(e => (
         <li>
             <input type="checkbox" name={e.name} onChange={(e) => handleInputChange(e)} />
-            <label for={e.name}>{e.name}</label>
+            <label>{e.name}</label>
         </li>
     ));
 

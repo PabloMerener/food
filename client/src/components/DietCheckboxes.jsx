@@ -1,13 +1,25 @@
 import React from 'react';
 
+import store from '../store.js'
+import { setDietChecbox } from '../actions';
+
 import './RecipeForm.css';
 
 const DietCheckboxes = ({ dietTypes }) => {
 
+  const onChange = (e) => {
+    store.dispatch(
+      setDietChecbox({
+        name: e.target.name,
+        checked: e.target.checked
+      })
+    );
+  };
+
   const checkboxes = dietTypes.map((e, i) => (
-    <li key={`li-${e}`} style={{marginBottom: 0}}>
-      <input key={e} type="checkbox" name={e} />
-      <label key={i} className="nav-bar">{e}</label>
+    <li key={`li-${e.name}`} style={{ marginBottom: 0 }}>
+      <input key={e.name} type="checkbox" name={e.name} onChange={onChange} />
+      <label key={i} className="nav-bar">{e.name}</label>
     </li>
   ));
 
