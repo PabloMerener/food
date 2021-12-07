@@ -31,9 +31,12 @@ export function getRecipes(data) {
   }
 }
 
-export function fetchRecipes() {
+export function fetchRecipes(query = null) {
+  const endpoint = 'http://localhost:3001/recipes';
+  const url = query ? endpoint + `?${query}` : endpoint;
+
   return function (dispatch) {
-    axios.get(`http://localhost:3001/recipes`)
+    axios.get(url)
       .then(r => r.data)
       .then(d => {
         dispatch(getRecipes(

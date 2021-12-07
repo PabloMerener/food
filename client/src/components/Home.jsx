@@ -15,19 +15,19 @@ const Home = ({ diets, fetchDiets, recipes, fetchRecipes }) => {
     useEffect(() => { fetchDiets() }, []);
 
     const navigate = useNavigate();
-    const onSearch = (recipe) => {
-        fetchRecipes();
-
-        const endpoint = 'http://localhost:3001/recipes';
+    const onSearch = (recipe) => {      
+        // const endpoint = 'http://localhost:3001/recipes';
         const nameQuery = recipe.length ? 'name=' + recipe : '';
-        const dietQuery = [];
+        // const dietQuery = [];
 
-        let query = nameQuery;
-        if (query.length) {
-            if (dietQuery.length) query = query + `&${dietQuery}`;
-        } else {
-            query = dietQuery;
-        }
+        // let query = nameQuery;
+        // if (query.length) {
+        //     if (dietQuery.length) query = query + `&${dietQuery}`;
+        // } else {
+        //     query = dietQuery;
+        // }
+
+        fetchRecipes(nameQuery);
 
         if (recipe) {
             navigate('/recipes?name=' + recipe);
