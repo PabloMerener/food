@@ -10,7 +10,6 @@ import RecipeList from './RecipeList';
 import Header from './Header';
 
 const Home = ({ diets, fetchDiets, recipes, fetchRecipes, paginator }) => {
-    console.log('paginator.totalPages', paginator.totalPages);
     const dietTypes = typeof diets === 'undefined' ? [] : diets;
 
     useEffect(() => { fetchDiets() }, []);

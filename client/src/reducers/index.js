@@ -12,7 +12,6 @@ const initialState = {
 export default (state = initialState, action) => {
     switch (action.type) {
         case 'GET_RECIPES':
-            debugger;
             const selectedDiets1 = state.diets
                 .filter(e => e.checked)
                 .map(e => e.name.toUpperCase());

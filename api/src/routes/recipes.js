@@ -11,11 +11,28 @@ const {
     API, API_KEY, MOCK_API
 } = process.env;
 
-const setFilterToResponse = (req, res, data) => {
+const setFilterToResponse = async (req, res, data) => {
     const { name, diet } = req.query;
     const json = JSON.parse(data);
 
     let results = json.results;
+
+    const recipes = await Recipe.findAll({ include: Diet });
+    recipes.forEach(recipe => {
+        results.push({
+            id: recipe.id,
+            title: recipe.name,
+            image: '../../../cooking.png',
+            spoonacularScore: recipe.score,
+            healthScore: recipe.health_score,
+            diets: recipe.diets.map(e => e.name),
+            dishTypes: [],
+            analyzedInstructions: [{
+                number: 1,
+                step: recipe.step_by_step
+            }]
+        });
+    });
 
     if (name) results = results.filter(e => e.title.toUpperCase().includes(name.toUpperCase()));
 
@@ -32,10 +49,10 @@ const setFilterToResponse = (req, res, data) => {
 
 router.get('/', (req, res) => {
     if (MOCK_API === 'true') {
-        const filePath = path.join(__dirname, '../../mock_api/detailed_recipes_100.json');
+        const filePath = path.join(__dirname, '../../mock_api/detailed_recipes.json');
         setFilterToResponse(req, res, fs.readFileSync(filePath, 'utf8'));
     } else {
-        const url = API + '/recipes/complexSearch?addRecipeInformation=true&apiKey=' + API_KEY + `&number=100`;
+        const url = API + '/recipes/complexSearch?addRecipeInformation=true&apiKey=' + API_KEY + `&number=10`;
 
         https.get(url, function (httpsRes) {
             var data = '';
@@ -53,12 +70,30 @@ router.get('/', (req, res) => {
     }
 });
 
-router.get('/:id', (req, res) => {
-    // No se por qué 'id' viene con el sufijo '.json'
-    const id = parseInt(req.params.id);
+router.get('/:id', async (req, res) => {
+    const id = path.parse(req.params.id).name; // Remove json extension
 
     if (MOCK_API === 'true') {
         res.sendFile(path.join(__dirname, '../../mock_api/recipes/' + id + '.json'));
+    } else if (isNaN(id)) {
+        const recipe = await Recipe.findByPk(id, { include: Diet });
+        const r = recipe.toJSON();
+
+        res.send({
+            id: id,
+            title: r.name,
+            image: '../../../cooking.png',
+            spoonacularScore: r.score,
+            healthScore: r.health_score,
+            diets: r.diets.map(e => e.name),
+            dishTypes: [],
+            analyzedInstructions: [{
+                steps: [{
+                    number: 1,
+                    step: r.step_by_step
+                }]
+            }]
+        });
     } else {
         const url = API + '/recipes/' + id + '/information?apiKey=' + API_KEY;
 
@@ -97,7 +132,7 @@ router.post('/create', async (req, res) => {
             const diet = await Diet.findOne({ where: { name: dietName } });
             associatedDiets.push(diet);
         }
-        recipe.addDiets(associatedDiets.map(e => e.id));
+        await recipe.addDiets(associatedDiets.map(e => e.id));
 
         res.status(201).send({
             ...recipe.toJSON(),
