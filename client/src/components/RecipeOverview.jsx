@@ -6,26 +6,21 @@ const RecipeOverview = ({ recipe }) => {
     return (
         <div className="recipeCardParent">
             <div className="recipeCardHeader">
+                <Link to={`/recipes/${recipe.id}`}>
                     {recipe.title}
+                </Link>
             </div>
             <div className="recipeCardMain">
-                <div className="recipeCardLeft">
-                    <Link to={`/recipes/${recipe.id}`}>
-                        <img
-                            key={recipe.image}
-                            src={recipe.image}
-                            alt="recipe"
-                            width="100%"
-                        >
-                        </img>
-                    </Link>
+                <img
+                    key={recipe.image}
+                    src={recipe.image}
+                    alt="recipe"
+                    width="30%"
+                >
+                </img>
+                <div className="recipeCardRight">
+                    {recipe.diets.map(e => (<>{`+ ${e}`}<br></br></>))}
                 </div>
-                <div className="recipeCardMain">
-                    <div className="recipeCardRight">
-                        {recipe.diets.map(e => (<>{`+ ${e}`}<br></br></>))}
-                    </div>
-                </div>
-
             </div>
         </div>
     )

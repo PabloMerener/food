@@ -1,11 +1,8 @@
 .recipeCardParent {
-    display: flex;
-    flex-direction: column;
     padding: 10px;
 }
   
 .recipeCardHeader {
-    flex: 1;
 };
 
 /*  Cosa de Mandinga!
@@ -16,8 +13,6 @@
 
 .recipeCardMain {
     display: flex;
-    flex-direction: row;
-    flex: 3;
     padding: 10px;
 };
 

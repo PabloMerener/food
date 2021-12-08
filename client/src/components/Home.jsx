@@ -40,7 +40,6 @@ const Home = ({ diets, fetchDiets, recipes, fetchRecipes, paginator }) => {
             <div className="main">
                 <div style={{ display: "flex" }}>
                     <NavBar
-                        style={{ width: "20%" }}
                         onSearch={onSearch}
                         dietTypes={dietTypes}
                         paginator={paginator}
