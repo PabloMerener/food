@@ -4,9 +4,7 @@ import RecipeOverview from './RecipeOverview';
 const RecipeList = ({ recipes }) => {
     const recipeList = typeof recipes === 'undefined'
         ? []
-        : recipes
-            .filter(e => e.visible)
-            .map(e => <RecipeOverview key={e.id} recipe={e} />);
+        : recipes.map(e => <RecipeOverview key={e.id} recipe={e} />);
 
     return (
         <div>

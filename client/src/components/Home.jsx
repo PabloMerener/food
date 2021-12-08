@@ -9,13 +9,14 @@ import NavBar from './NavBar';
 import RecipeList from './RecipeList';
 import Header from './Header';
 
-const Home = ({ diets, fetchDiets, recipes, fetchRecipes }) => {
+const Home = ({ diets, fetchDiets, recipes, fetchRecipes, paginator }) => {
+    console.log('paginator.totalPages', paginator.totalPages);
     const dietTypes = typeof diets === 'undefined' ? [] : diets;
 
     useEffect(() => { fetchDiets() }, []);
 
     const navigate = useNavigate();
-    const onSearch = (recipe) => {      
+    const onSearch = (recipe) => {
         // const endpoint = 'http://localhost:3001/recipes';
         const nameQuery = recipe.length ? 'name=' + recipe : '';
         // const dietQuery = [];
@@ -39,8 +40,22 @@ const Home = ({ diets, fetchDiets, recipes, fetchRecipes }) => {
             <Header title="Recipes" navigateTo="/recipes/create" buttonText="Crear" />
             <div className="main">
                 <div style={{ display: "flex" }}>
-                    <NavBar style={{ width: "20%" }} onSearch={onSearch} dietTypes={dietTypes} />
-                    <RecipeList recipes={recipes} />
+                    <NavBar
+                        style={{ width: "20%" }}
+                        onSearch={onSearch}
+                        dietTypes={dietTypes}
+                        paginator={paginator}
+                    />
+                    <RecipeList
+                        recipes={
+                            recipes ? recipes
+                                .filter(e => e.filtered)
+                                .slice(
+                                    paginator.itemsPerPage * (paginator.currentPage - 1), 
+                                    paginator.currentPage * paginator.itemsPerPage
+                                ) : []
+                        }
+                    />
                 </div>
             </div>
         </>
@@ -50,7 +65,8 @@ const Home = ({ diets, fetchDiets, recipes, fetchRecipes }) => {
 const mapStateToProps = (state) => {
     return {
         recipes: state.recipes,
-        diets: state.diets
+        diets: state.diets,
+        paginator: state.paginator
     }
 };
 

@@ -3,7 +3,7 @@ import axios from 'axios';
 export function getDiets(data) {
   return {
     type: 'GET_DIETS',
-    data
+    payload: data
   }
 }
 
@@ -27,7 +27,7 @@ export function fetchDiets() {
 export function getRecipes(data) {
   return {
     type: 'GET_RECIPES',
-    data
+    payload: data
   }
 }
 
@@ -42,7 +42,7 @@ export function fetchRecipes(query = null) {
         dispatch(getRecipes(
           d.map(e => ({
             ...e,
-            visible: true
+            filtered: true
           }))
         ))
       })
@@ -54,5 +54,12 @@ export function setDietChecbox(checbox) {
   return {
     type: 'SET_DIET_CHECKBOX',
     payload: checbox
+  }
+}
+
+export function setPage(page) {
+  return {
+    type: 'SET_PAGE',
+    payload: page
   }
 }
