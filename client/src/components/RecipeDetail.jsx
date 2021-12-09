@@ -1,18 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useParams } from 'react-router-dom';
+import store from '../store.js'
 import RecipeDetailCard from './RecipeDetailCard';
 
 const RecipeDetail = () => {
-    const [recipe, setRecipe] = useState('');
     const { id } = useParams();
 
-    useEffect(() => {
-        fetch(`http://localhost:3001/recipes/${id}.json`)
-            .then(r => r.json())
-            .then((recipe) => {
-                setRecipe(recipe);
-            });
-    }, [id]);
+    const { recipes } = store.getState();
+    const recipe = recipes.find(e => e.id == id);
 
     return (
         <div id="root" className="App" >
