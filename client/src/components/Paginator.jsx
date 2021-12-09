@@ -3,8 +3,10 @@ import store from '../store.js'
 import { setPage } from '../actions';
 
 const Paginator = ({ paginator }) => {
+  const { currentPage } = paginator;
+
   const onChange = (e) => {
-    store.dispatch(setPage(e.target.value));
+    store.dispatch(setPage(parseInt(e.target.value)));
   }
 
   return (
@@ -17,7 +19,7 @@ const Paginator = ({ paginator }) => {
       </label>
       <select name="paginator" style={{ marginLeft: "5px" }} onChange={onChange}>
         {Array.from({ length: paginator.totalPages }, (_, i) => i + 1).map(
-          e => <option key={e} value={e}>{e}</option>
+          e => e === currentPage ? <option key={e} value={e} selected>{e}</option> : <option key={e} value={e} >{e}</option>
         )}
       </select>
     </div>
