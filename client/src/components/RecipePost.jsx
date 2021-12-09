@@ -70,7 +70,7 @@ function RecipePost() {
 
     return (
         <>
-            <Header title="Create Recipe" navigateTo="/" buttonText="Home" />
+            <Header title="Create Recipe" buttonText="Back" />
             <div className="main">
                 <div className="container">
                     <form onSubmit={handleSubmit} id="recipe-form">

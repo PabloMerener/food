@@ -10,7 +10,7 @@ const Header = ({ title, navigateTo, buttonText }) => {
             <div style={{ display: "flex" }}>
                 <button
                     style={{ alignItems: "center" }}
-                    onClick={() => { navigate(navigateTo) }}
+                    onClick={() => buttonText === 'Back' ? navigate(-1) : navigate(navigateTo) }
                     type="button"
                 >
                     {buttonText}

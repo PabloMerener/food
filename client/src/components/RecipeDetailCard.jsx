@@ -9,11 +9,8 @@ const RecipeDetailCard = ({ recipe }) => {
 
     return (
         <>
-            <Header title="Recipe" navigateTo="/" buttonText="Home" />
+            <Header title={recipe.title} buttonText="Back" />
             <div className="recipeCardParent">
-                <div className="recipeCardHeader">
-                    <p key={recipe.id}> {`${recipe.title}`} </p>
-                </div>
                 <div className="recipeCardMain">
                     <img key={recipe.image} src={recipe.image} alt="recipe"></img>
                     <div className="recipeCardRight">
@@ -22,7 +19,6 @@ const RecipeDetailCard = ({ recipe }) => {
                     <div className="recipeCardRight">
                         {getDescriptions(recipe.dishTypes)}
                     </div>
-
                 </div>
             </div>
             <ul className="flex-outer">
