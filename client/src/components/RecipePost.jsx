@@ -74,37 +74,44 @@ function RecipePost() {
             <div className="main">
                 <div className="container">
                     <form onSubmit={handleSubmit} id="recipe-form">
-                        <ul className="flex-outer">
-                            <li>
-                                <label for="name">Nombre:</label>
-                                <input name="name" type="text" onChange={(e) => handleInputChange(e)} />
-                            </li>
-                            <li>
-                                <label for="dishOverview">Resumen del plata:</label>
-                                <textarea name="dish_overview" rows="3" onChange={(e) => handleInputChange(e)} />
-                            </li>
-                            <li>
-                                <label for="score">Puntuación:</label>
-                                <input name="score" type="number" min="0" max="100" onChange={(e) => handleInputChange(e)} />
-                            </li>
-                            <li>
-                                <label for="healthScore">Nivel de "comida saludable":</label>
-                                <input name="health_score" type="number" min="0" max="100" onChange={(e) => handleInputChange(e)} />
-                            </li>
-                            <li>
-                                <label for="stepByStep">Paso a paso:</label>
-                                <textarea name="step_by_step" rows="3" onChange={(e) => handleInputChange(e)} />
-                            </li>
-                            <li>
-                                <label for="diets">Dietas:</label>
-                                <ul>
-                                    {checkboxes}
+                        <div style={{ display: "flex" }}>
+                            <div style={{ flex: 3 }}>
+                                <ul className="flex-outer">
+                                    <li>
+                                        <label for="name">Name:</label>
+                                        <input name="name" type="text" onChange={(e) => handleInputChange(e)} />
+                                    </li>
+                                    <li>
+                                        <label for="dishOverview">Dish overview:</label>
+                                        <textarea name="dish_overview" rows="5" onChange={(e) => handleInputChange(e)} />
+                                    </li>
+                                    <li>
+                                        <label for="score">Score:</label>
+                                        <input name="score" type="number" min="0" max="100" onChange={(e) => handleInputChange(e)} />
+                                    </li>
+                                    <li>
+                                        <label for="healthScore">Healthy score:</label>
+                                        <input name="health_score" type="number" min="0" max="100" onChange={(e) => handleInputChange(e)} />
+                                    </li>
+                                    <li>
+                                        <label for="stepByStep">Step by step:</label>
+                                        <textarea name="step_by_step" rows="5" onChange={(e) => handleInputChange(e)} />
+                                    </li>
                                 </ul>
-                            </li>
-                            <li>
-                                <button type="submit">Submit</button>
-                            </li>
-                        </ul>
+                            </div>
+                            <div style={{ flex: 1 }}>
+                                <ul className="flex-outer">
+                                    <li>
+                                        <ul>
+                                            {checkboxes}
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <button type="submit">Submit</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
