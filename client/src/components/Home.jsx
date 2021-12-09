@@ -39,21 +39,27 @@ const Home = ({ diets, fetchDiets, recipes, fetchRecipes, paginator }) => {
             <Header title="Recipes" navigateTo="/recipes/create" buttonText="Crear" />
             <div className="main">
                 <div style={{ display: "flex" }}>
-                    <NavBar
-                        onSearch={onSearch}
-                        dietTypes={dietTypes}
-                        paginator={paginator}
-                    />
-                    <RecipeList
-                        recipes={
-                            recipes ? recipes
-                                .filter(e => e.filtered)
-                                .slice(
-                                    paginator.itemsPerPage * (paginator.currentPage - 1), 
-                                    paginator.currentPage * paginator.itemsPerPage
-                                ) : []
-                        }
-                    />
+                    <div>
+                        <NavBar
+
+                            onSearch={onSearch}
+                            dietTypes={dietTypes}
+                            paginator={paginator}
+                        />
+                    </div>
+                    <div style={{ flex: 1 }}>
+                        <RecipeList
+
+                            recipes={
+                                recipes ? recipes
+                                    .filter(e => e.filtered)
+                                    .slice(
+                                        paginator.itemsPerPage * (paginator.currentPage - 1),
+                                        paginator.currentPage * paginator.itemsPerPage
+                                    ) : []
+                            }
+                        />
+                    </div>
                 </div>
             </div>
         </>

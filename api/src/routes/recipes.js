@@ -28,8 +28,10 @@ const setFilterToResponse = async (req, res, data) => {
             diets: recipe.diets.map(e => e.name),
             dishTypes: [],
             analyzedInstructions: [{
-                number: 1,
-                step: recipe.step_by_step
+                steps: [{
+                    number: 1,
+                    step: recipe.step_by_step
+                }]
             }]
         });
     });

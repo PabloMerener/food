@@ -7,7 +7,12 @@ const RecipeList = ({ recipes }) => {
         : recipes.map(e => <RecipeOverview key={e.id} recipe={e} />);
 
     return (
-        <div>
+        <div
+            style={{
+                display: "flex",
+                flexWrap: "wrap"
+            }}
+        >
             {recipeList}
         </div>
     );
