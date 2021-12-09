@@ -36,7 +36,7 @@ const Home = ({ diets, fetchDiets, recipes, fetchRecipes, paginator }) => {
 
     return (
         <>
-            <Header title="Recipes" navigateTo="/recipes/create" buttonText="Crear" />
+            <Header navigateTo="/recipes/create" buttonText="Crear" />
             <div className="main">
                 <div style={{ display: "flex" }}>
                     <div>

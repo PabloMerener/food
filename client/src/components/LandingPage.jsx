@@ -4,7 +4,7 @@ import Header from './Header';
 const LandingPage = () => {
     return (
         <>
-            <Header title="Henry Food" navigateTo="/recipes" buttonText="Comenzar"/>
+            <Header navigateTo="/recipes" buttonText="Comenzar"/>
             <div className="main" style={{ justifyContent: "center", alignItems: "center" }}>
                 <img
                     key="cooking"
